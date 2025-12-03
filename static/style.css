@@ -1,0 +1,444 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --success: #10b981;
+    --danger: #ef4444;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --border: #e2e8f0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.header-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px var(--shadow);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.title .icon {
+    width: 48px;
+    height: 48px;
+    color: var(--primary);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--gray);
+    font-weight: 400;
+}
+
+/* Main Content */
+.main-content {
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* Upload Section */
+.upload-section {
+    margin-bottom: 2rem;
+}
+
+.upload-area {
+    background: white;
+    border: 3px dashed var(--border);
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px var(--shadow);
+}
+
+.upload-area:hover::before {
+    opacity: 0.05;
+}
+
+.upload-content {
+    position: relative;
+    z-index: 1;
+}
+
+.upload-icon {
+    width: 80px;
+    height: 80px;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+.upload-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.upload-text {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+.btn-upload {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-upload:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+}
+
+/* Results Section */
+.results-section {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.result-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.image-preview {
+    position: relative;
+    overflow: hidden;
+    background: var(--light);
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.caption-container {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.caption-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.caption-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--primary);
+}
+
+.caption-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading p {
+    color: var(--gray);
+    font-size: 0.95rem;
+}
+
+.caption-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--dark);
+    padding: 1.5rem;
+    background: var(--light);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+.caption-text.show {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-copy, .btn-new {
+    flex: 1;
+    min-width: 150px;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-copy {
+    background: var(--success);
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-copy:hover {
+    background: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+}
+
+.btn-new {
+    background: var(--light);
+    color: var(--dark);
+    border: 2px solid var(--border);
+}
+
+.btn-new:hover {
+    background: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Features Section */
+.features-section {
+    margin-top: 4rem;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    color: white;
+    font-size: 0.95rem;
+    animation: fadeIn 0.6s ease-out 0.6s both;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .result-card {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .header-content {
+        padding: 2rem;
+    }
+
+    .upload-area {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .title {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .title .icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn-copy, .btn-new {
+        min-width: 100%;
+    }
+
+    .caption-text {
+        font-size: 1.1rem;
+    }
+}
